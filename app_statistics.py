@@ -52,20 +52,30 @@ st.write("Introduce un conjunto de datos para calcular sus medidas" \
 #==================================
 
 st.subheader("1. Introduce tus datos")
-st.write("Escribe los números separados por" \
-" comas, espacios o saltos de línea.")
 
-entrada = st.text_area(
+
+with st.form("formulario_datos"):
+    st.write(
+        "Escribe los números separados por comas, "
+        "espacios o saltos de línea."
+    )
+    entrada = st.text_area(
     "Conjunto de datos",
     value="65, 70, 72, 75, 76, 78, 80, 82, "
     "84, 85, 87, 90, 92, 95, 130",
     height=100
-)
+    )
+    enviar = st.form_submit_button(
+        "Procesar datos",
+        use_container_width=True
+    )
 
 archivo = st.file_uploader(
     "O carga un archivo CSV",
     type=["csv"]
 )
+
+
 
 datos = None
 
